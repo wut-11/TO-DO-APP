@@ -1,0 +1,79 @@
+/*CSS of To-do web-page*/
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px; 
+    box-sizing: border-box;
+}
+html,body{
+    min-height:100vh;
+    margin: 0%;
+}
+body{
+    background: linear-gradient(
+        to bottom, 
+    white 10%,
+    rgb(176, 213, 226) 40%,
+    rgb(134, 203, 227) 100%
+    );
+}
+#container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#addbtn:hover{
+    color: rgb(255, 255, 255);
+    background-color: lightblue;
+
+}
+#addbtn{
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 10px;
+    width: 50px;
+    margin: 5px;
+    padding: 5px;
+}
+#nav{
+    background-color: lightblue;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    
+}
+#taskinput{
+    margin: 5px;
+    padding: 5px;
+    border-radius:10px;
+    width: 300px;
+}
+.delbtn{
+    /* transition: background-color 0.3s, color 0.3s;
+    margin: 30px;
+    padding: 0px; */
+    background: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0px;
+    margin-left: 10px;
+    transition: 0.3s;
+    margin-bottom: 7px;
+    
+    vertical-align: middle;
+}
+.delbtn:hover{
+
+    color: rgb(255, 255, 255);
+    background-color: lightblue;
+}
+.completed{
+    transition: text-decoration 0.1s, color 0.3s;
+    text-decoration: line-through;
+    opacity: 0.6;
+    color: rgb(26, 26, 171);
+}
+.li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
