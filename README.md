@@ -60,6 +60,13 @@ todo-app/
 * Delete bug fixed
 * Object DOM manipulation
 
+### v4.0
+* Stopped Event Bubbling
+* CRUD Full Stack Completed
+* Edit Task Button
+* Minor Bugs Fixes
+* Persist tasks with localStorage
+
 ## 👨‍💻 Author
 
-Rare
+R

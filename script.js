@@ -2,6 +2,7 @@
 console.log("Hello from JavaScript !!");
 
 let tasks = JSON.parse(localStorage.getItem("tasks"))||[];
+let editingTask = null;
 
 const taskinput = document.getElementById("taskinput");
 const addbtn = document.getElementById("addbtn");
@@ -13,7 +14,7 @@ console.log(addbtn);
 console.log(tasklist);
 console.log(error);
 
-function createTask(task){
+function createTask(task, index){
         const li = document.createElement("li");
         li.textContent = task.text;
         if(task.completed){
@@ -38,13 +39,31 @@ function createTask(task){
         li.appendChild(delbtn);
         delbtn.appendChild(icon);
 
-        delbtn.addEventListener("click", function(){
-        li.remove();
-        const index = tasks.indexOf(task);
-        tasks.splice(index,1);
+        delbtn.addEventListener("click", function(event){
+            event.stopPropagation();
+            li.remove();
+            tasks.splice(index,1);
 
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-});
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        });
+
+        const editbtn = document.createElement("button");
+        editbtn.classList.add("editbtn");
+
+        const icon2 = document.createElement("span");
+        icon2.classList.add("material-symbols-outlined");
+        icon2.textContent="edit";
+
+        li.appendChild(editbtn);
+        editbtn.appendChild(icon2);
+
+        editbtn.addEventListener("click", function(event){
+            event.stopPropagation();
+            editingTask = index;
+            taskinput.value = task.text;
+            addbtn.textContent = "Save";
+            editingTask.value = "";
+        })
 }
 
 addbtn.addEventListener("click", function(){
@@ -52,6 +71,18 @@ addbtn.addEventListener("click", function(){
     const tasktext = taskinput.value.trim();
     
     if(tasktext !== ""){
+        if(editingTask !== null){
+            tasks[editingTask].text= tasktext;
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            tasklist.innerHTML = "";
+            editingTask = null;
+            addbtn.textContent = "Add";
+
+            tasks.forEach(function(task, index){
+            createTask(task, index);
+            });
+        }
+        else{
         const task = {
             text : tasktext,
             completed :false
@@ -60,10 +91,10 @@ addbtn.addEventListener("click", function(){
         tasks.push(task);
         localStorage.setItem("tasks", JSON.stringify(tasks));
         error.textContent ="";
-        createTask(task);
-        li.textContent = task.text;
-        
+        createTask(task, tasks.length-1);
+        }        
     }
+
     else{
         error.textContent = "Please enter a task!";
     }
@@ -75,7 +106,7 @@ taskinput.addEventListener("keydown", function(event){
     }
 
 });
-for (const task of tasks){
+tasks.forEach(function(task, index){
     console.log(task);
-    createTask(task);
-}
+    createTask(task, index);
+});

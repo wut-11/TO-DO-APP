@@ -77,3 +77,23 @@ body{
     align-items: center;
     justify-content: space-between;
 }
+.editbtn{
+    /* transition: background-color 0.3s, color 0.3s;
+    margin: 30px;
+    padding: 0px; */
+    background: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0px;
+    margin-left: 10px;
+    transition: 0.3s;
+    margin-bottom: 7px;
+    
+    vertical-align: middle;
+}
+.editbtn:hover{
+
+    color: rgb(255, 255, 255);
+    background-color: lightblue;
+}
