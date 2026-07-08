@@ -1,4 +1,77 @@
 /*CSS of To-do web-page*/
+:root{
+    --bg-top : white;
+    --bg-middle: rgb(176, 213, 226) ;
+    --bg-bottom: rgb(134, 203, 227);
+
+    --primary: lightblue;
+    --text-light: white;
+    --completed: rgb(26, 26, 171);
+
+}
+body[data-theme="dino"][data-mode="light"]{
+    --bg-top: rgb(240,255,240);
+    --bg-middle: rgb(190,230,190);
+    --bg-bottom: rgb(120,180,120);
+
+    --primary: rgb(133, 186, 135);
+}
+body[data-theme="dino"][data-mode="dark"]{
+    --bg-top: rgb(59, 103, 70);
+    --bg-middle: rgb(54, 92, 64);
+    --bg-bottom: rgb(18, 30, 22);
+
+    --primary: rgb(126, 165, 132);
+    --text-light: white;
+    --completed: rgb(150, 235, 170);
+}
+body[data-theme="sakura"][data-mode="light"]{
+    --bg-top: rgb(240,255,240);
+    --bg-middle: rgb(230, 190, 230);
+    --bg-bottom: rgb(246, 149, 246);
+
+    --primary: rgba(246, 158, 247, 0.838);
+}
+body[data-theme="sakura"][data-mode="dark"]{
+    --bg-top: rgb(171, 105, 151);
+    --bg-middle: rgb(163, 98, 143);
+    --bg-bottom: rgb(127, 44, 102);
+
+    --primary: rgb(202, 138, 175);
+    --text-light: white;
+    --completed: rgb(255, 186, 220);
+}
+body[data-theme="jelly"][data-mode="dark"]{
+    --bg-top: rgb(68, 97, 156);
+    --bg-middle: rgb(49, 78, 119);
+    --bg-bottom: rgb(25, 40, 69);
+
+    --primary: rgb(92, 150, 235);
+    --text-light: white;
+    --completed: rgb(165, 215, 255);
+}
+
+body{
+    background: linear-gradient(
+        to bottom, 
+    var(--bg-top) 10%,
+    var(--bg-middle) 40%,
+    var(--bg-bottom) 100%
+    );
+     transition:
+        background 0.5s ease,
+        color 0.5s ease;
+}
+body[data-mode="dark"]{
+    --bg-top: rgb(35,35,35);
+    --bg-middle: rgb(55,55,55);
+    --bg-bottom: rgb(20,20,20);
+
+    --primary: rgb(80,80,80);
+    --text-light: white;
+    --completed: rgb(120,170,255);
+}
+
 *{
     font-family: Arial, Helvetica, sans-serif;
     padding: 10px; 
@@ -8,36 +81,36 @@ html,body{
     min-height:100vh;
     margin: 0%;
 }
-body{
-    background: linear-gradient(
-        to bottom, 
-    white 10%,
-    rgb(176, 213, 226) 40%,
-    rgb(134, 203, 227) 100%
-    );
-}
+
 #container{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-#addbtn:hover{
-    color: rgb(255, 255, 255);
-    background-color: lightblue;
+#addbtn:hover, #themebtn:hover{
+    color: var(--text-light);
+    background-color: var(--primary);
 
 }
-#addbtn{
+#addbtn, #themebtn{
     transition: background-color 0.3s, color 0.3s;
+
     border-radius: 10px;
     width: 50px;
     margin: 5px;
     padding: 5px;
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        transform 0.2s ease;
 }
 #nav{
-    background-color: lightblue;
+    background-color:var(--primary);
     border-radius: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    transition:
+        background-color 0.2s ease;
     
 }
 #taskinput{
@@ -45,8 +118,21 @@ body{
     padding: 5px;
     border-radius:10px;
     width: 300px;
+    transition:
+        background-color 0.5s ease,
+        color 0.5s ease,
+        border-color 0.5s ease;
 }
-.delbtn{
+/*#themebtn{
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    vertical-align: middle;
+    background:none;
+}*/
+
+.delbtn, .editbtn{
     /* transition: background-color 0.3s, color 0.3s;
     margin: 30px;
     padding: 0px; */
@@ -58,42 +144,45 @@ body{
     margin-left: 10px;
     transition: 0.3s;
     margin-bottom: 7px;
-    
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        transform 0.2s ease;
     vertical-align: middle;
 }
-.delbtn:hover{
-
-    color: rgb(255, 255, 255);
-    background-color: lightblue;
+.delbtn:hover, .editbtn:hover{
+    color: var(--text-light);
+    background-color: var(--primary);
 }
 .completed{
-    transition: text-decoration 0.1s, color 0.3s;
     text-decoration: line-through;
     opacity: 0.6;
-    color: rgb(26, 26, 171);
+    color: var(--completed);
+    transition:
+        color 0.5s ease,
+        text-decoration 0.2s ease,
+        opacity 0.3s ease;
 }
 .li{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.editbtn{
-    /* transition: background-color 0.3s, color 0.3s;
-    margin: 30px;
-    padding: 0px; */
-    background: none;
+.mode-toggle{
+    width: 60px;
+    height: 34px;
     border: none;
-    border-radius: 10px;
+    border-radius: 999px;
     cursor: pointer;
-    padding: 0px;
-    margin-left: 10px;
-    transition: 0.3s;
-    margin-bottom: 7px;
-    
-    vertical-align: middle;
+    background: var(--primary);
+    color: var(--text-light);
+    font-size: 18px;
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        transform 0.2s ease;
 }
-.editbtn:hover{
 
-    color: rgb(255, 255, 255);
-    background-color: lightblue;
+.mode-toggle:hover{
+    transform: scale(1.05);
 }

@@ -8,6 +8,29 @@ const taskinput = document.getElementById("taskinput");
 const addbtn = document.getElementById("addbtn");
 const tasklist = document.getElementById("tasklist");
 const error = document.getElementById("error");
+const mode = document.getElementById("mode-toggle");
+const themes = document.querySelectorAll(".theme");
+
+const savedMode = localStorage.getItem("mode");
+if(savedMode){
+    document.body.dataset.mode = savedMode;
+    if(savedMode === "dark"){
+        mode.textContent = "🌃";
+    }else{
+        mode.textContent="🏙️";
+    }
+}
+const savedTheme = localStorage.getItem("themes");
+if(savedTheme){
+    document.body.dataset.theme = savedTheme;
+    if(savedTheme === "jelly"){
+        themes.textContent = "🪼";
+    }else if(savedTheme === "dino"){
+        themes.textContent = "🦖";
+    }else{
+        themes.textContent = "🌸";
+    }
+}
 
 console.log(taskinput);
 console.log(addbtn);
@@ -62,8 +85,7 @@ function createTask(task, index){
             editingTask = index;
             taskinput.value = task.text;
             addbtn.textContent = "Save";
-            editingTask.value = "";
-        })
+        });
 }
 
 addbtn.addEventListener("click", function(){
@@ -110,3 +132,23 @@ tasks.forEach(function(task, index){
     console.log(task);
     createTask(task, index);
 });
+themes.forEach(function (theme) {
+  theme.addEventListener("click", function () {
+    document.body.dataset.theme = this.dataset.theme;
+    localStorage.setItem("themes", document.body.dataset.theme);
+    console.log(document.body.dataset.theme);
+  });
+});
+
+mode.addEventListener("click", function () {
+  if (document.body.dataset.mode === "light") {
+    document.body.dataset.mode = "dark";
+    mode.textContent="🌃";
+  } else {
+    document.body.dataset.mode = "light";
+    mode.textContent="🏙️";
+  }
+  localStorage.setItem("mode", document.body.dataset.mode);
+  console.log(document.body.dataset.mode);
+});
+

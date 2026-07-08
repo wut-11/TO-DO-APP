@@ -9,10 +9,18 @@
     <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
-<body>
+<body data-mode="light" data-theme="sky">
   
         <nav id="nav">
             <h1>My Tasks</h1>
+            <div id="theme-panel">
+                <button id="mode-toggle" class="mode-toggle">🏙️</button>
+                <div id="theme-picker">
+                    <span class="theme" data-theme="jelly">🪼</span>
+                    <span class="theme" data-theme="sakura">🌸</span>
+                    <span class="theme" data-theme="dino">🦖</span>
+                </div>
+            </div>
         </nav>
         <div id="container">
             <div id="inputarea">
@@ -24,7 +32,7 @@
         <ul id="tasklist"></ul>
     </div>
     <!-- linking the javascript file for this project -->
-    <script src="scriptmain.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>

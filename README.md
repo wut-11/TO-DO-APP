@@ -67,6 +67,14 @@ todo-app/
 * Minor Bugs Fixes
 * Persist tasks with localStorage
 
+### v4.5
+* Clickable Theme Emojis
+* data-theme working
+* data-mode working
+* CSS reacts to both
+* Smooth Transitions
+* Save theme + mode locally
+
 ## 👨‍💻 Author
 
 R
