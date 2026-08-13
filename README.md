@@ -75,6 +75,16 @@ todo-app/
 * Smooth Transitions
 * Save theme + mode locally
 
+### v5.0
+* Floating task card layout
+* Anchor-based task positioning
+* Level-based card movement
+* Cursor-controlled task focus
+* Smooth card transitions
+* Dynamic task area height
+* Improved task card UI
+* Floating Notes Animation completed
+
 ## 👨‍💻 Author
 
 R

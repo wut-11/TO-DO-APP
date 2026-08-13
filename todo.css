@@ -9,6 +9,7 @@
     --completed: rgb(26, 26, 171);
 
 }
+
 body[data-theme="dino"][data-mode="light"]{
     --bg-top: rgb(240,255,240);
     --bg-middle: rgb(190,230,190);
@@ -16,6 +17,7 @@ body[data-theme="dino"][data-mode="light"]{
 
     --primary: rgb(133, 186, 135);
 }
+
 body[data-theme="dino"][data-mode="dark"]{
     --bg-top: rgb(59, 103, 70);
     --bg-middle: rgb(54, 92, 64);
@@ -25,6 +27,7 @@ body[data-theme="dino"][data-mode="dark"]{
     --text-light: white;
     --completed: rgb(150, 235, 170);
 }
+
 body[data-theme="sakura"][data-mode="light"]{
     --bg-top: rgb(240,255,240);
     --bg-middle: rgb(230, 190, 230);
@@ -32,6 +35,7 @@ body[data-theme="sakura"][data-mode="light"]{
 
     --primary: rgba(246, 158, 247, 0.838);
 }
+
 body[data-theme="sakura"][data-mode="dark"]{
     --bg-top: rgb(171, 105, 151);
     --bg-middle: rgb(163, 98, 143);
@@ -41,6 +45,7 @@ body[data-theme="sakura"][data-mode="dark"]{
     --text-light: white;
     --completed: rgb(255, 186, 220);
 }
+
 body[data-theme="jelly"][data-mode="dark"]{
     --bg-top: rgb(68, 97, 156);
     --bg-middle: rgb(49, 78, 119);
@@ -62,6 +67,7 @@ body{
         background 0.5s ease,
         color 0.5s ease;
 }
+
 body[data-mode="dark"]{
     --bg-top: rgb(35,35,35);
     --bg-middle: rgb(55,55,55);
@@ -77,9 +83,28 @@ body[data-mode="dark"]{
     padding: 10px; 
     box-sizing: border-box;
 }
-html,body{
-    min-height:100vh;
+
+html{
     margin: 0%;
+    /*min-height: 100vh;*/
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+
+    background: linear-gradient(
+        to bottom,
+        var(--bg-top) 10%,
+        var(--bg-middle) 40%,
+        var(--bg-bottom) 100%
+    );
+}
+
+#taskArea{
+    position: relative;
+    width: 100%;
+    /*min-height: 100vh;*/
 }
 
 #container{
@@ -87,11 +112,13 @@ html,body{
     flex-direction: column;
     align-items: center;
 }
+
 #addbtn:hover, #themebtn:hover{
     color: var(--text-light);
     background-color: var(--primary);
 
 }
+
 #addbtn, #themebtn{
     transition: background-color 0.3s, color 0.3s;
 
@@ -104,6 +131,7 @@ html,body{
         color 0.35s ease,
         transform 0.2s ease;
 }
+
 #nav{
     background-color:var(--primary);
     border-radius: 10px;
@@ -113,6 +141,7 @@ html,body{
         background-color 0.2s ease;
     
 }
+
 #taskinput{
     margin: 5px;
     padding: 5px;
@@ -150,10 +179,12 @@ html,body{
         transform 0.2s ease;
     vertical-align: middle;
 }
+
 .delbtn:hover, .editbtn:hover{
     color: var(--text-light);
     background-color: var(--primary);
 }
+
 .completed{
     text-decoration: line-through;
     opacity: 0.6;
@@ -163,11 +194,13 @@ html,body{
         text-decoration 0.2s ease,
         opacity 0.3s ease;
 }
+
 .li{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 .mode-toggle{
     width: 60px;
     height: 34px;
@@ -185,4 +218,33 @@ html,body{
 
 .mode-toggle:hover{
     transform: scale(1.05);
+}
+
+.task-card{
+    position:absolute;
+
+    width:240px;
+
+    min-height:120px;
+
+    background:white;
+
+    border-radius:20px;
+
+    box-shadow:4px 8px 20px rgba(0,0,0,.15);
+
+    padding:15px;
+
+    /*opacity: ;*/
+
+    transition:
+        transform .45s ease;
+}
+
+.task-card:hover{
+    transform : scale(1.02);
+}
+
+#inputarea{
+    margin-bottom: 20px;
 }
