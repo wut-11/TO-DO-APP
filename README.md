@@ -90,7 +90,7 @@ todo-app/
 * Improved task card UI
 * Floating Notes Animation completed
 
-###v5.5
+### v5.5
 * Improved the buttons for theme-picker
 * Refined glass UI
 * Added built-in Info / How It Works panel
