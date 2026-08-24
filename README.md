@@ -9,6 +9,7 @@ A simple and responsive To-Do Web App built using HTML, CSS, and JavaScript.
 * Add new tasks
 * Mark tasks as completed
 * Delete tasks
+* Edit Tasks
 * Responsive design
 * Clean and simple interface
 * Local Storage support
@@ -21,12 +22,13 @@ A simple and responsive To-Do Web App built using HTML, CSS, and JavaScript.
 
 ## 🚀 Future Plans
 
-* Dark Mode/ Themes
 * Task categories
-* Due dates
-* Drag-and-drop sorting
-* Improved UI and animations
-* Floating Notes Animation
+* Dynamic viewing for different viewports
+* Drag and Drop Cards/ Pin a Task
+* Sub-Tasks
+* Task Search & Counter
+* Focus Timer/ Pomodoro
+* Sound-effects
 
 ## 📂 Project Structure
 
@@ -84,6 +86,18 @@ todo-app/
 * Dynamic task area height
 * Improved task card UI
 * Floating Notes Animation completed
+
+v5.5
+* Improved the buttons for theme-picker
+* Refined glass UI
+* Added built-in Info / How It Works panel
+* Added instructions for task interactions
+* Added cursor-based automatic scrolling
+* Improved floating card navigation
+* Added theme-aware Info panel
+* Added Light / Dark mode support to the Info panel
+* Improved navbar layout
+* Improved overall interaction flow
 
 ## 👨‍💻 Author
 

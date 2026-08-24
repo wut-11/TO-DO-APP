@@ -12,12 +12,21 @@ const error = document.getElementById("error");
 const mode = document.getElementById("mode-toggle");
 const themes = document.querySelectorAll(".theme");
 
+const infoBtn = document.getElementById("infoBtn");
+const infoOverlay = document.getElementById("infoOverlay");
+const closeInfo = document.getElementById("closeInfo");
+
 const levelGap = 210;
 
 const leftX = 10;
 const rightX = 1140;
 
 const centreX = window.innerWidth / 2 - 120;
+
+const scrollZone = 100;
+const maxScrollSpeed = 8;
+
+let mouseY = 0;
 
 function getAnchor(index) {
     const y = index * levelGap;
@@ -39,27 +48,42 @@ function moveCard(card, x, y) {
 }
 
 function updateCardPositions() {
+
     const cards = document.querySelectorAll(".task-card");
 
+    // First: move the new active level to the centre
     cards.forEach(function(card) {
-        const index = Number(card.dataset.index);
-        const pos = getAnchor(index);
 
-        if (index !== activeLevel) {
-            moveCard(card, pos.x, pos.y);
+        const index = Number(card.dataset.index);
+
+        if (index === activeLevel) {
+
+            const pos = getAnchor(index);
+
+            moveCard(card, centreX, pos.y);
         }
     });
 
+    // Then: send the previous level and other cards back
     setTimeout(function() {
+
         cards.forEach(function(card) {
+
             const index = Number(card.dataset.index);
 
-            if (index === activeLevel) {
+            if (index !== activeLevel) {
+
                 const pos = getAnchor(index);
-                moveCard(card, centreX, pos.y);
+
+                moveCard(card, pos.x, pos.y);
             }
         });
-    }, 200);
+
+        setTimeout(function(){
+            isAnimating = false;
+        }, 450);
+
+    }, 450);
 }
 
 let activeLevel = 0;
@@ -180,6 +204,26 @@ taskinput.addEventListener("keydown", function(event) {
     }
 });
 
+infoBtn.addEventListener("click", function() {
+    infoOverlay.classList.add("show");
+});
+
+closeInfo.addEventListener("click", function() {
+    infoOverlay.classList.remove("show");
+});
+
+infoOverlay.addEventListener("click", function(event) {
+    if (event.target === infoOverlay) {
+        infoOverlay.classList.remove("show");
+    }
+});
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        infoOverlay.classList.remove("show");
+    }
+});
+
 function updateTaskAreaHeight() {
     const numberOfTasks = tasks.length;
     if (numberOfTasks === 0) {
@@ -189,13 +233,46 @@ function updateTaskAreaHeight() {
     taskArea.style.height = `${numberOfTasks * levelGap + 120}px`;
 }
 
+function autoScroll() {
+
+    if (tasks.length === 0) {
+        requestAnimationFrame(autoScroll);
+        return;
+    }
+
+    if (mouseY < scrollZone) {
+
+        const intensity = (scrollZone - mouseY) / scrollZone;
+
+        window.scrollBy(0, -maxScrollSpeed * intensity);
+
+    }
+
+    else if (mouseY > window.innerHeight - scrollZone) {
+
+        const intensity =
+            (mouseY - (window.innerHeight - scrollZone)) / scrollZone;
+
+        window.scrollBy(0, maxScrollSpeed * intensity);
+
+    }
+
+    requestAnimationFrame(autoScroll);
+}
+
+autoScroll();
+
 document.addEventListener("mousemove", function(event) {
     if (tasks.length === 0) {
         return;
     }
+
+    mouseY = event.clientY;
+
     const taskAreaTop = taskArea.getBoundingClientRect().top + window.scrollY;
-    const mouseY = event.clientY + window.scrollY;
-    const relativeY = mouseY - taskAreaTop;
+    const pageMouseY = event.clientY + window.scrollY;
+
+    const relativeY = pageMouseY - taskAreaTop;
 
     let level = Math.floor(relativeY / levelGap);
 

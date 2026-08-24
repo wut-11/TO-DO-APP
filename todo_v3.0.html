@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo App</title>
+    <title>To-Do App</title>
     <link rel="stylesheet" href="todo.css">
     <!-- link for google icons to embed -->
     <link rel="stylesheet"
@@ -12,7 +12,13 @@
 <body data-mode="light" data-theme="sky">
   
         <nav id="nav">
-            <h1>My Tasks</h1>
+            <div id="nav-title">
+                <h1>My Tasks</h1>
+                <button id="infoBtn" class="info-btn">
+                    <span class="material-symbols-outlined">info</span>
+                </button>
+            </div>
+
             <div id="theme-panel">
                 <button id="mode-toggle" class="mode-toggle">🏙️</button>
                 <div id="theme-picker">
@@ -22,6 +28,7 @@
                 </div>
             </div>
         </nav>
+        
         <div id="container">
             <div id="inputarea">
         <input type="text" id="taskinput" placeholder="Enter a task">
@@ -31,6 +38,68 @@
             </div>
         <div id="taskArea"></div>
     </div>
+
+    <div id="infoOverlay" class="info-overlay">
+
+    <div class="info-panel">
+
+        <button id="closeInfo" class="close-info">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+
+        <h2>How it works</h2>
+
+        <div class="info-item">
+            <span class="material-symbols-outlined">keyboard_return</span>
+            <div>
+                <h3>Enter</h3>
+                <p>Add a new task or save an edited task.</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <span class="material-symbols-outlined">check_circle</span>
+            <div>
+                <h3>Task Card</h3>
+                <p>Click a task card to mark it as completed.</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <span class="material-symbols-outlined">edit</span>
+            <div>
+                <h3>Edit</h3>
+                <p>Edit an existing task.</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <span class="material-symbols-outlined">delete</span>
+            <div>
+                <h3>Delete</h3>
+                <p>Delete a task permanently.</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <span class="material-symbols-outlined">palette</span>
+            <div>
+                <h3>Themes</h3>
+                <p>Use the theme buttons to change the look of your workspace.</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <span class="material-symbols-outlined">swap_vert</span>
+            <div>
+                <h3>Scrolling</h3>
+                <p>Move your cursor toward the top or bottom of the screen to smoothly scroll through your tasks.</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
     <!-- linking the javascript file for this project -->
     <script src="script.js"></script>
 
