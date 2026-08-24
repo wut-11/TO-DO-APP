@@ -81,7 +81,7 @@ todo-app/
 * Save theme + mode locally
 
 ### v5.0
-* Floating task card layout
+* Sliding task card layout
 * Anchor-based task positioning
 * Level-based card movement
 * Cursor-controlled task focus
@@ -90,7 +90,7 @@ todo-app/
 * Improved task card UI
 * Floating Notes Animation completed
 
-v5.5
+###v5.5
 * Improved the buttons for theme-picker
 * Refined glass UI
 * Added built-in Info / How It Works panel
